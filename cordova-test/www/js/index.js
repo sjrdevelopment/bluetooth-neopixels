@@ -108,15 +108,15 @@ var app = {
         $('#testButton3').show();
 
         $('#testButton1').on('click', function() {
-            bluetoothSerial.write("Hello from ipad 1");
+            bluetoothSerial.write("1");
         });
 
         $('#testButton2').on('click', function() {
-            bluetoothSerial.write("Hello from ipad 2");
+            bluetoothSerial.write("2");
         });
 
         $('#testButton3').on('click', function() {
-            bluetoothSerial.write("Hello from ipad 3");
+            bluetoothSerial.write("3");
         });
 
     

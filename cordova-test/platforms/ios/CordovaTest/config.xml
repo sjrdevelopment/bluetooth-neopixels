@@ -31,4 +31,7 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <icon src="Resources/icons/Icon-Small@2x.png" />
+    <icon gap:platform="ios" height="57" src="Resources/icons/Icon-60@2x.png" width="57" />
+    <icon gap:platform="ios" height="114" src="Resources/icons/Icon-40@2x.png" width="114" />
 </widget>

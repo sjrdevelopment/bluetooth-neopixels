@@ -20,29 +20,26 @@ uint32_t ironManDarkBlue = strip.Color(1,38,66);
 uint32_t ironManMedBlue = strip.Color(0,112,155);
 uint32_t white = strip.Color(255,255,255);
 uint32_t off = strip.Color(0,0,0);
+uint32_t colred = strip.Color(255,0,0);
+uint32_t colgreen = strip.Color(0,255,0);
+uint32_t colblue = strip.Color(0,0,255);
 
 
 void setup() {
   // bluetooth init
   Serial.begin(9600);
   while(!Serial); // Leonardo/Micro should wait for serial init
-  Serial.println(F("Adafruit Bluefruit Low Energy nRF8001 Print echo demo"));
 
+  BTLEserial.begin();
   
   // Neopixels init
   strip.begin();
   
   strip.setBrightness(80);
   
-  for(int y = 0; y < numPixels; y++) {
-    strip.setPixelColor(y, ironManDarkBlue);
-  }
-   
   strip.show(); // Initialize all pixels to 'off'
   
   
-  
-  BTLEserial.begin();
   
 }
 
@@ -84,34 +81,51 @@ void loop() {
      while (BTLEserial.available()) {
       char c = BTLEserial.read();
       Serial.print(c);
+      String mystring = String(c);
+      Serial.println(mystring);
       
-
-      
-      if (c == '1') {
-         one(); 
+      if (mystring == "1") {
+         blue(); 
       }
       
-      if (c == '2') {
-        two();
+      if (mystring == "2") {
+        green();
       }
       
-      if (c == '3') {
-        three();
+      if (mystring == "3") {
+        red();
       }
+      
+      
      
     }
   }  
   
 }
 
-void one() {
-  Serial.println("Test 1");
+void blue() {
+  Serial.println("Blue");
+  for(int s = 0; s < numPixels; s++) {
+    strip.setPixelColor(s, colblue);
+     strip.show();
+  }
+   
 }
 
-void two() {
-  Serial.println("Test 2");
+void green() {
+  Serial.println("Green");
+  for(int t = 0; t < numPixels; t++) {
+    strip.setPixelColor(t, colgreen);
+     strip.show();
+  }
+   
 }
 
-void three() {
-  Serial.println("Test 3");
+void red() {
+  Serial.println("Red");
+  for(int u = 0; u < numPixels; u++) {
+    strip.setPixelColor(u, colred);
+     strip.show();
+  }
+   
 }
